@@ -14,6 +14,7 @@
   --c-mist: #97a9c3; /* texto secundario */
   --c-plate: #f5c400; /* amarillo placa de moto */
   --c-plate-ink: #111111;
+  --c-whatsapp: #25d366; /* verde oficial: se reconoce de inmediato */
 
   /* Type */
   --font-sans: 'Saira', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -214,6 +215,15 @@ p {
 }
 
 .btn--plate:hover {
+  background: var(--c-foam);
+}
+
+.btn--whatsapp {
+  background: var(--c-whatsapp);
+  color: var(--c-night);
+}
+
+.btn--whatsapp:hover {
   background: var(--c-foam);
 }
 
@@ -550,6 +560,27 @@ p {
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 2.25rem;
+}
+
+.hero__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  margin-top: 0.75rem;
+  color: var(--c-foam);
+  font-weight: 600;
+  text-underline-offset: 0.25em;
+}
+
+.hero__whatsapp svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--c-whatsapp);
+}
+
+.hero__whatsapp:hover {
+  color: var(--c-whatsapp);
 }
 
 .hero__facts {
@@ -1169,6 +1200,12 @@ p {
   text-underline-offset: 0.25em;
 }
 
+.location__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .location__map {
   overflow: hidden;
   aspect-ratio: 4 / 3;
@@ -1269,7 +1306,7 @@ p {
   place-items: center;
   width: 3.5rem;
   height: 3.5rem;
-  background: #25d366;
+  background: var(--c-whatsapp);
   color: #fff;
   border-radius: 50%;
   box-shadow: 0 0.75rem 2rem -0.5rem rgb(0 0 0 / 0.6);
