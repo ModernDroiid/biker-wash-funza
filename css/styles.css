@@ -52,6 +52,14 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-padding-top: var(--header-h);
+  /* "proximity": la página se acomoda al inicio de una sección solo cuando el scroll
+     se detiene cerca de ella; dentro de secciones largas se lee sin saltos. */
+  scroll-snap-type: y proximity;
+}
+
+/* Puntos de anclaje del scroll: cada sección principal. */
+main > section {
+  scroll-snap-align: start;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -280,14 +288,24 @@ p {
 }
 
 .header__link {
+  padding-bottom: 0.2rem;
   color: var(--c-mist);
   font-weight: 500;
   text-decoration: none;
-  transition: color 160ms ease;
+  /* Subrayado azul de la sección visible; crece de izquierda a derecha. */
+  background: linear-gradient(var(--c-blue), var(--c-blue)) no-repeat left bottom / 0 2px;
+  transition:
+    color 160ms ease,
+    background-size 240ms var(--ease-out);
 }
 
-.header__link:hover {
+.header__link:hover,
+.header__link[aria-current="true"] {
   color: var(--c-foam);
+}
+
+.header__link[aria-current="true"] {
+  background-size: 100% 2px;
 }
 
 .header__nav {
@@ -353,6 +371,14 @@ p {
     padding-block: 0.85rem;
     font-size: var(--step-1);
     border-bottom: 1px solid var(--c-line);
+    background-position: left center;
+    background-size: 3px 0;
+  }
+
+  /* En el menú desplegable el indicador es una barra vertical. */
+  .header__link[aria-current="true"] {
+    padding-left: 0.85rem;
+    background-size: 3px 1.4em;
   }
 
   .header__cta {
